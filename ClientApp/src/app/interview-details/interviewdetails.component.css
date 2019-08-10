@@ -1,0 +1,16 @@
+.interview-form {
+    min-width: 150px;
+    max-width: 1000px;
+    width: 100%;
+  }
+  
+  .interview-full-width {
+    width: 100%;
+    min-width: 150px;
+    max-width: 500px;
+  }
+  
+  .interview-full-width-right{
+      margin-left: 120%;
+  }
+  

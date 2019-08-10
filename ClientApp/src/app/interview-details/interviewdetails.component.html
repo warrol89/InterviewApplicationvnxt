@@ -1,0 +1,69 @@
+<mat-card>
+        <mat-card-header>
+                <mat-card-title>Interview Applicant</mat-card-title>
+        </mat-card-header>
+        <mat-card-content><form class="interview-form form-group" [formGroup]="ngGroup">
+                <div class="row">
+                        <mat-form-field class="col-sm-6">
+                                <input matInput placeholder="Name" formControlName="name">
+                                <mat-error *ngIf="ngGroup?.controls?.name?.hasError('required')"> Candidate Name required     </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="col-sm-6">
+                                <input matInput placeholder="Experience" formControlName="experience">
+                                <mat-error *ngIf="ngGroup?.controls?.experience?.hasError('required')"> Experience required </mat-error>
+                       
+                        </mat-form-field>
+                       
+                </div>
+                <div class="row">
+                        <mat-form-field class="col-sm-6">
+                                <input matInput placeholder="Phone Number" formControlName="phoneNumber">
+                                <mat-error *ngIf="ngGroup?.controls?.phoneNumber?.hasError('required')"> PhoneNumber required </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="col-sm-6">
+                                <input matInput placeholder="Name of L1" formControlName="nameOfL1">
+                        </mat-form-field>
+                </div>
+                <div class="row">
+                        <mat-form-field class="col-sm-6">
+                                <input matInput placeholder="Email address" formControlName="emailAddress">
+                                <mat-error *ngIf="ngGroup?.controls?.emailAddress?.hasError('required')"> Email Address required </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="col-sm-6">
+                                <input matInput placeholder="Name of L2" formControlName="nameOfL2">
+                        </mat-form-field>
+                </div>
+                <div class="row">
+                        <mat-form-field class="col-sm-6">
+                                <textarea matInput placeholder="Previous Companies" formControlName="previousCompanies"></textarea>
+
+                                <mat-error *ngIf="ngGroup?.controls?.previousCompanies?.hasError('required')"> Previous company details required </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="col-sm-6">
+                                <input matInput placeholder="Human Resource(HR)" formControlName="hr">
+                        </mat-form-field>
+                </div>
+                <div class="row">
+                        <mat-form-field class="col-sm-6">
+                                <textarea matInput placeholder="Skill Set" formControlName="skillSet"></textarea>
+                                <mat-error *ngIf="ngGroup?.controls?.skillSet?.hasError('required')"> Skill set worked on required </mat-error>
+                        </mat-form-field>
+                        <mat-form-field  class="col-sm-6">
+                                <mat-label>Status</mat-label>
+                                <mat-select formControlName="status">
+                                        <mat-option *ngFor="let status of statuses" [value]="status.value" > 
+                                                {{status.viewName}}
+                                        </mat-option>
+                                </mat-select>
+                        </mat-form-field>
+                        
+                </div>
+
+               <div class="custom-file col-sm-12">
+                        <input type="file" class="custom-file-input" id="validatedCustomFile" (change)="onFileChange($event)">
+                        <label class="custom-file-label" for="validatedCustomFile">Upload Resume</label>
+                   </div>
+        </form></mat-card-content>
+</mat-card>
+
+
