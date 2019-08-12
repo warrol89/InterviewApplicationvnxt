@@ -8,10 +8,10 @@ import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { InterviewDetailsComponent } from './interview-details/interviewdetails.component';
 import { MaterialmoduleModule } from 'src/shared/materialmodule.module';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -19,8 +19,7 @@ import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    CounterComponent,
-    FetchDataComponent
+    CounterComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -32,7 +31,6 @@ import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform
     RouterModule.forRoot([
       { path: '', component: InterviewDetailsComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
     ])
   ],
   exports: [MaterialmoduleModule],

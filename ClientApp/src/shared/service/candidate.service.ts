@@ -16,6 +16,6 @@ export class CandidateService {
 
   saveCandidateDetails(details: applicantDetails) {
 
-this._http.post(environment.baseUrl, details );
+return this._http.post(environment.baseUrl+'api/candidates', details );
   }
 }

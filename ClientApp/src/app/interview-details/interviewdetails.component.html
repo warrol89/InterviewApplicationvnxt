@@ -35,12 +35,13 @@
                 </div>
                 <div class="row">
                         <mat-form-field class="col-sm-6">
-                                <textarea matInput placeholder="Previous Companies" formControlName="previousCompanies"></textarea>
+                                <textarea matInput placeholder="Previous Companies" formControlName="previousCompany"></textarea>
 
-                                <mat-error *ngIf="ngGroup?.controls?.previousCompanies?.hasError('required')"> Previous company details required </mat-error>
+                                <mat-error *ngIf="ngGroup?.controls?.previousCompany?.hasError('required')"> Previous company details required </mat-error>
                         </mat-form-field>
                         <mat-form-field class="col-sm-6">
                                 <input matInput placeholder="Human Resource(HR)" formControlName="hr">
+                                <mat-error *ngIf="ngGroup?.controls?.hr?.hasError('required')"> Previous company details required </mat-error>
                         </mat-form-field>
                 </div>
                 <div class="row">
@@ -58,10 +59,17 @@
                         </mat-form-field>
                         
                 </div>
-
+<div class="row">
                <div class="custom-file col-sm-12">
                         <input type="file" class="custom-file-input" id="validatedCustomFile" (change)="onFileChange($event)">
                         <label class="custom-file-label" for="validatedCustomFile">Upload Resume</label>
+                   </div>
+                </div>
+                   <div class="row">
+                           <div class="col-sm-12">
+                                   <button mat-raised-button (click)="onSubmit()">Submit</button>
+                           </div>
+
                    </div>
         </form></mat-card-content>
 </mat-card>
