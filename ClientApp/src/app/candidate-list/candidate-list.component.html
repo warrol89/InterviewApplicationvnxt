@@ -1,0 +1,26 @@
+<mat-card>
+  
+    <mat-card-content>
+<table class="table table-hover table-striped" >
+  <thead>
+    <th>Name</th>
+    <th>Phone Number</th>
+    <th>Hr</th>
+    <th>Skill Set</th>
+    <th>Experience</th>
+    <th>Status</th>
+  </thead>
+  <tr *ngFor="let candidate of candidateDetails">
+    <td><a [routerLink]="['/home',candidate.candidateId]">{{candidate.name}}</a> </td>
+    <td>{{candidate.phoneNumber}}</td>
+    <td>{{candidate.hr}}</td>
+    <td>{{candidate.skillSet}}</td>
+    <td>{{candidate.experience}}</td>
+    <td>{{candidate.status}}</td>
+
+  </tr>
+
+  
+</table>
+</mat-card-content>
+</mat-card>

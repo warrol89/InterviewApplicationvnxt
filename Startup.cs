@@ -9,6 +9,9 @@ using Microsoft.Extensions.DependencyInjection;
 using InterviewApplicationvnxt.Data;
 using InterviewApplicationvnxt.Data.Repository;
 using AutoMapper;
+using InterviewApplicationvnxt.Service;
+using Microsoft.OpenApi.Models;
+
 
 namespace InterviewApplicationvnxt
 {
@@ -27,9 +30,15 @@ namespace InterviewApplicationvnxt
             var sqlConnString = Configuration["sql"];
             services.AddDbContext<ApplicationContext>(option => option.UseSqlServer(sqlConnString)); 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-
+            services.AddScoped<ApplicationContext>();
+            services.AddScoped<ICandidateService, CandidateService>();
             services.AddScoped<ICandidateRepository, CandidateRepository>();
             services.AddAutoMapper();
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+            });
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -42,6 +51,7 @@ namespace InterviewApplicationvnxt
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseSwagger();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -52,6 +62,10 @@ namespace InterviewApplicationvnxt
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

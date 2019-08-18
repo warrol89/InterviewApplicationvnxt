@@ -11,6 +11,8 @@ import { CounterComponent } from './counter/counter.component';
 import { InterviewDetailsComponent } from './interview-details/interviewdetails.component';
 import { MaterialmoduleModule } from 'src/shared/materialmodule.module';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { CandidateListComponent } from './candidate-list/candidate-list.component';
+import { listLazyRoutes } from '@angular/compiler/src/aot/lazy_routes';
 
 
 @NgModule({
@@ -19,7 +21,8 @@ import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    CounterComponent
+    CounterComponent,
+    CandidateListComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -30,7 +33,10 @@ import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform
     MaterialmoduleModule,
     RouterModule.forRoot([
       { path: '', component: InterviewDetailsComponent, pathMatch: 'full' },
+      {path: 'home', redirectTo: ''},
+      {path: 'home/:id', component: InterviewDetailsComponent},
       { path: 'counter', component: CounterComponent },
+      {path: 'list', component: CandidateListComponent}
     ])
   ],
   exports: [MaterialmoduleModule],

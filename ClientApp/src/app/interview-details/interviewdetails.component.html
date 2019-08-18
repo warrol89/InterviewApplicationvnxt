@@ -18,7 +18,7 @@
                 <div class="row">
                         <mat-form-field class="col-sm-6">
                                 <input matInput placeholder="Phone Number" formControlName="phoneNumber">
-                                <mat-error *ngIf="ngGroup?.controls?.phoneNumber?.hasError('required')"> PhoneNumber required </mat-error>
+                                <mat-error *ngIf="ngGroup?.controls?.phoneNumber?.hasError('required') "> PhoneNumber required </mat-error>
                         </mat-form-field>
                         <mat-form-field class="col-sm-6">
                                 <input matInput placeholder="Name of L1" formControlName="nameOfL1">
@@ -27,7 +27,7 @@
                 <div class="row">
                         <mat-form-field class="col-sm-6">
                                 <input matInput placeholder="Email address" formControlName="emailAddress">
-                                <mat-error *ngIf="ngGroup?.controls?.emailAddress?.hasError('required')"> Email Address required </mat-error>
+                                <mat-error *ngIf="ngGroup?.controls?.emailAddress?.invalid"> Enter valid email address </mat-error>
                         </mat-form-field>
                         <mat-form-field class="col-sm-6">
                                 <input matInput placeholder="Name of L2" formControlName="nameOfL2">
@@ -66,9 +66,10 @@
                    </div>
                 </div>
                    <div class="row">
-                           <div class="col-sm-12">
-                                   <button mat-raised-button (click)="onSubmit()">Submit</button>
+                           <div class="col-sm-12" > 
+                                   <button style="margin-top:3%; width: 100%" mat-raised-button (click)="onSubmit()">Submit</button>
                            </div>
+                           
 
                    </div>
         </form></mat-card-content>

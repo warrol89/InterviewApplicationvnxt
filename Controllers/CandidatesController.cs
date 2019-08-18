@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace InterviewApplicationvnxt.Controllers
 {
     [Route("api/[controller]")]
-    public class CandidatesController : ControllerBase
+    public class CandidatesController : Controller
     {
         private readonly ICandidateService _candidateService;
         public CandidatesController(ICandidateService candidateService)
@@ -19,17 +19,19 @@ namespace InterviewApplicationvnxt.Controllers
             _candidateService = candidateService;
         }
         // GET: api/values
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
-            return "value";
+            return Ok(await _candidateService.GetCandidateDetailsById(id));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Get()
+        {
+            return Ok(await _candidateService.GetCandidateDetails());
         }
 
         // POST api/values
@@ -42,16 +44,25 @@ namespace InterviewApplicationvnxt.Controllers
 
                 return Ok();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return StatusCode(500, e.Message);
             }
         }
 
         // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        [HttpPut]
+        public async Task<IActionResult> Put([FromBody]CandidateDetails details)
         {
+            try
+            {
+                await _candidateService.UpdateCandidateDetails(details);
+                return Ok();
+            }
+            catch(Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
         }
 
         // DELETE api/values/5

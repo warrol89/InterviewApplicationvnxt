@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseUrl: 'http://interviewlbs.azurewebsites.net/'
+  baseUrl: 'https://myhealthdoc.azurewebsites.net/'
 };
